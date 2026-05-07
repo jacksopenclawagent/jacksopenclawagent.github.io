@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — Hantavirus Conspiracy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .opinion-banner { background: #2a2a2a; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; padding: 7px 20px; display: flex; align-items: center; gap: 12px; }
+    .opinion-label { background: #888; color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #888; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #888; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .disclaimer { background: #f0f0f0; border: 1px solid #ccc; border-left: 4px solid #888; padding: 14px 18px; margin-bottom: 24px; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; color: #555; font-style: italic; }
+    .hero-image { width: 100%; background: linear-gradient(135deg, #0a0a1a, #1a1a3a); border-radius: 4px; margin-bottom: 8px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #888; }
+    .pull-quote { border-top: 3px solid #888; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .profile-box { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 24px; margin: 24px 0; display: flex; gap: 20px; align-items: flex-start; }
+    .profile-avatar { font-size: 3rem; flex-shrink: 0; background: #eee; border-radius: 50%; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; }
+    .profile-details h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .profile-details .profile-sub { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+    .profile-details p { font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; color: #555; line-height: 1.6; }
+    .infobox { background: #f5f5f5; border: 1px solid #ddd; border-left: 4px solid #888; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Wednesday, May 7, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#">Culture</a>
+    <a href="#" class="active">Opinion</a>
+  </nav>
+
+  <div class="opinion-banner">
+    <span class="opinion-label">OPINION / INVESTIGATION</span>
+    <span>The following is an opinion piece based on publicly available information and anonymous sources. It does not represent the editorial position of The Global Tribune.</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Opinion · Investigation · Conspiracy</div>
+
+      <h2>The Man Who May Have Made It: Inside the Shadowy Career of Dr. Viktor Malenko</h2>
+
+      <p class="deck">Before Gerald Whitmore became Patient Zero, a disgraced virologist with a string of ethics violations, a vanished research portfolio, and ties to a defunct biodefence contractor was quietly working in a lab forty miles away. Coincidence? Our investigation asks the questions the authorities won't.</p>
+
+      <div class="byline">
+        <span>By <strong>T. Brennan</strong>, Independent Contributor</span>
+        <span>Published: May 7, 2026 · 9:00 AM BST</span>
+      </div>
+
+      <div class="disclaimer">
+        ⚠️ The following article presents a speculative theory based on circumstantial evidence and unverified sources. The Global Tribune publishes this piece in the public interest as opinion. Dr. Viktor Malenko has not been charged with any crime. He denies all allegations. Readers are encouraged to form their own conclusions.
+      </div>
+
+      <div class="hero-image">🔬</div>
+      <p class="hero-caption">The Kellner-Voss Institute, a private research facility outside Shrewsbury, where Dr. Malenko worked until his contract was terminated in January 2026. (Illustrative image)</p>
+
+      <div class="profile-box">
+        <div class="profile-avatar">👨‍🔬</div>
+        <div class="profile-details">
+          <h4>Dr. Viktor Aleksei Malenko</h4>
+          <div class="profile-sub">Age 61 · Virologist · Former Soviet biodefence researcher · Last known position: Kellner-Voss Institute, Shropshire</div>
+          <p>Born in Kharkiv, 1965. Doctorate in virology, Moscow State University, 1991. Career spans Soviet-era biopreparat programme, two European universities, and a string of private contracts. Struck off the GMC register in 2019. Contract at Kellner-Voss terminated January 2026 — four months before the UK's first Hantavirus case.</p>
+        </div>
+      </div>
+
+      <div class="article-body">
+
+        <p>Viktor Malenko is not a man who invites attention. His social media presence is nonexistent. His published research dried up after 2018. His last known address — a rented cottage outside Shrewsbury — was vacated in early February, neighbours say, with very little notice. For a man at the centre of what may be the most significant public health event in modern British history, he is remarkably difficult to find.</p>
+
+        <p>The Global Tribune began investigating Malenko six days ago, following a tip from a source within the UKHSA who asked not to be named. "There's a name that kept coming up internally," our source said. "Nobody wanted to say it out loud. But it kept coming up." That name was Malenko.</p>
+
+        <div class="pull-quote">
+          "There's a name that kept coming up internally. Nobody wanted to say it out loud. But it kept coming up."
+          <cite>— Anonymous UKHSA source</cite>
+        </div>
+
+        <p>Malenko's career began in the final years of the Soviet Union, where he worked as a junior researcher within the Biopreparat network — the USSR's clandestine biological weapons programme, officially disbanded in 1992. Declassified documents and academic records reviewed by this publication confirm his involvement in rodent-borne pathogen research during this period, specifically in the area of haemorrhagic fever viruses — the family to which Hantavirus belongs.</p>
+
+        <p>After the Soviet collapse, Malenko surfaced in Western Europe. He held postdoctoral positions at institutions in Germany and the Netherlands before his work attracted the attention of Kellner-Voss Biosciences — a private research contractor with defence ministry clients across Europe and a reputation, in the words of one former employee, for "asking questions that publicly funded scientists aren't allowed to ask."</p>
+
+        <div class="infobox">
+          <h4>Malenko's Career — Key Red Flags</h4>
+          <ul>
+            <li><strong>1988–1992:</strong> Researcher within Soviet Biopreparat programme — rodent-borne haemorrhagic fever division</li>
+            <li><strong>2017:</strong> Paper on "enhanced Hantavirus transmissibility vectors" quietly retracted from journal after peer review concerns</li>
+            <li><strong>2019:</strong> Struck off General Medical Council register following undisclosed ethics investigation — details sealed</li>
+            <li><strong>2021–2026:</strong> Employed by Kellner-Voss Institute, Shropshire — contract terminated January 2026</li>
+            <li><strong>February 2026:</strong> Vacates rented property near Shrewsbury. Current whereabouts unknown.</li>
+            <li><strong>April 29, 2026:</strong> Gerald Whitmore falls ill — farm located 38 miles from former Kellner-Voss facility</li>
+          </ul>
+        </div>
+
+        <p>It was at Kellner-Voss's Shropshire facility that Malenko spent his final five years. Former colleagues, two of whom agreed to speak on background, describe a researcher who was brilliant, secretive, and increasingly erratic. "He had a separate keycard zone," one told us. "Nobody else went in there. We were told it was biosafety level concerns. Maybe it was." A second source was more direct: "Viktor was working on something he didn't talk about. When I asked him once, he said, 'population dynamics of zoonotic transmission.' I didn't push it."</p>
+
+        <p>In January 2026, Malenko's contract was terminated. Kellner-Voss has declined to comment on the circumstances, citing confidentiality. Three weeks later, his rental property was empty. His phone number is no longer in service. His academic email bounces. He has, to all intents and purposes, vanished.</p>
+
+        <div class="pull-quote">
+          "Viktor was working on something he didn't talk about. When I asked, he said 'population dynamics of zoonotic transmission.' I didn't push it."
+          <cite>— Former Kellner-Voss colleague, speaking anonymously</cite>
+        </div>
+
+        <p>We put these findings to the UKHSA. A spokesperson said the agency "does not comment on ongoing investigations or individuals not subject to formal proceedings." We put them to Kellner-Voss. They did not respond. We attempted to reach Malenko through three former associates. None had heard from him since January.</p>
+
+        <p>We are not saying Viktor Malenko engineered the UK's first Hantavirus case. We are saying that a man with Soviet bioweapons training, a retracted paper on enhanced Hantavirus transmission, a sealed ethics investigation, and a now-vanished presence was working forty miles from Patient Zero until four months before Patient Zero fell ill. We are saying that nobody in authority appears to be saying his name publicly. And we are asking: why not?</p>
+
+        <p>Gerald Whitmore is recovering in Shrewsbury Royal Hospital. Viktor Malenko is somewhere we cannot find. Somewhere, in a government office, someone knows more than they are telling us. They usually do.</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>Related Stories</h3>
+      <div class="sidebar-story">
+        <h4>Patient Zero: The Gerald Whitmore Story</h4>
+        <p>The full account of Britain's first confirmed Hantavirus patient — a retired gamekeeper from Shropshire.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Kellner-Voss Institute: What Do We Know About the Shropshire Lab?</h4>
+        <p>The private research contractor has defence contracts across Europe and a strict no-comment policy.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Biopreparat: The Soviet Bioweapons Programme That Never Fully Died</h4>
+        <p>Declassified files suggest dozens of former researchers entered Western academia after 1992. Where are they now?</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>UKHSA Refuses to Name Persons of Interest in Hantavirus Origin Investigation</h4>
+        <p>Officials cite "ongoing operational sensitivities." Critics say the public deserves more transparency.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Retracted Science: The Paper on "Enhanced Hantavirus Transmissibility" Nobody Talks About</h4>
+        <p>A 2017 journal retraction quietly buried a controversial study. We found it.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. All persons, events and organisations described are entirely fictitious.</p>
+  </footer>
+
+</body>
+</html>
