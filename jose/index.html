@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>José Ramirez — Musician, Chef, Legend</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+    }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0533, #0d1f3c, #1a3320);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,180,0,0.08), transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      animation: glow 5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.3); }
+    }
+
+    .avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f5a623, #e8573a, #c0392b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+      margin-bottom: 28px;
+      position: relative; z-index: 1;
+      box-shadow: 0 0 60px rgba(245,166,35,0.3);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    header h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+      position: relative; z-index: 1;
+      background: linear-gradient(90deg, #f5a623, #f0e040, #f5a623);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header .subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+
+    .tags {
+      display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+      margin-top: 24px; position: relative; z-index: 1;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.82rem;
+      color: #ddd;
+      letter-spacing: 0.05em;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      font-size: 1.5rem; opacity: 0.4; animation: bounce 2s infinite;
+      z-index: 1;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 20px; max-width: 960px; margin: 0 auto; }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #f5a623;
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } header h1 { font-size: 2.5rem; } }
+
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #bbb;
+    }
+
+    .about-text strong { color: #f5a623; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-card .num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f5a623;
+    }
+
+    .stat-card .label {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* MUSIC */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .album-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .album-card:hover { transform: translateY(-4px); border-color: #f5a623; }
+
+    .album-art {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+
+    .album-info { padding: 16px; }
+    .album-info h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .album-info p { font-size: 0.78rem; color: #666; }
+
+    /* FOOD */
+    .food-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .food-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .food-card:hover { border-color: #e8573a; }
+    .food-card .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .food-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .food-card p { font-size: 0.88rem; color: #777; line-height: 1.6; }
+
+    /* QUOTE */
+    .quote-section {
+      background: linear-gradient(135deg, #1a0533, #0d1f3c);
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      margin: 0 20px;
+      max-width: 960px;
+      margin: 0 auto 80px;
+    }
+
+    .quote-section blockquote {
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .quote-section cite {
+      color: #f5a623;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px; background: #2a2a2a;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute; left: -26px; top: 6px;
+      width: 12px; height: 12px;
+      background: #f5a623;
+      border-radius: 50%;
+    }
+
+    .timeline-item .year {
+      font-size: 0.75rem;
+      color: #f5a623;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .timeline-item p { font-size: 0.88rem; color: #777; line-height: 1.5; }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      text-align: center;
+      padding: 40px 20px;
+      color: #444;
+      font-size: 0.85rem;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    footer .socials { font-size: 1.8rem; margin-bottom: 16px; display: flex; justify-content: center; gap: 16px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="avatar">🎸</div>
+    <h1>José Ramirez</h1>
+    <p class="subtitle">Musician · Chef · Storyteller · Dreamer</p>
+    <div class="tags">
+      <span class="tag">🎵 Flamenco Fusion</span>
+      <span class="tag">🍳 Self-Taught Chef</span>
+      <span class="tag">🌍 Seville, Spain</span>
+      <span class="tag">✍️ Songwriter</span>
+    </div>
+    <div class="scroll-hint">↓</div>
+  </header>
+
+  <section>
+    <h2>👤 Who is José?</h2>
+    <div class="about-grid">
+      <p class="about-text">
+        Born in the backstreets of <strong>Seville</strong> to a flamenco dancer mother and a fisherman father, 
+        José Ramirez grew up with music in his bones and salt air in his lungs. 
+        By age twelve he was busking on the Triana bridge. By twenty he had a record deal. 
+        By twenty-five he walked away from it to open a tapas bar.
+        <br><br>
+        Today, at 38, he does both — releasing albums from his kitchen, filming cooking videos between guitar sessions, 
+        and living a life that refuses to be put in a single box. 
+        <strong>"I never understood why people had to choose,"</strong> he says. <strong>"Food and music are the same thing. 
+        They both make people feel something."</strong>
+      </p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">4</div><div class="label">Studio Albums</div></div>
+        <div class="stat-card"><div class="num">38</div><div class="label">Countries Toured</div></div>
+        <div class="stat-card"><div class="num">2</div><div class="label">Restaurants</div></div>
+        <div class="stat-card"><div class="num">1.2M</div><div class="label">Followers</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🎵 Discography</h2>
+    <div class="album-grid">
+      <div class="album-card">
+        <div class="album-art" style="background: linear-gradient(135deg, #c0392b, #8e44ad);">🌹</div>
+        <div class="album-info"><h3>Sangre y Sal</h3><p>2011 · Debut · Flamenco</p></div>
+      </div>
+      <div class="album-card">
+        <div class="album-art" style="background: linear-gradient(135deg, #2980b9, #1abc9c);">🌊</div>
+        <div class="album-info"><h3>Marea Alta</h3><p>2014 · Fusion · Jazz</p></div>
+      </div>
+      <div class="album-card">
+        <div class="album-art" style="background: linear-gradient(135deg, #f39c12, #d35400);">🔥</div>
+        <div class="album-info"><h3>Fuego Lento</h3><p>2018 · Latin Soul</p></div>
+      </div>
+      <div class="album-card">
+        <div class="album-art" style="background: linear-gradient(135deg, #27ae60, #2c3e50);">🌙</div>
+        <div class="album-info"><h3>Noche Sin Fin</h3><p>2023 · Acoustic · Latest</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🍳 In the Kitchen</h2>
+    <div class="food-cards">
+      <div class="food-card">
+        <div class="icon">🥘</div>
+        <h3>Cocido Madrileño Reimagined</h3>
+        <p>José's signature dish — a three-day slow-cooked stew that blends his Seville roots with influences from six years living in Tokyo.</p>
+      </div>
+      <div class="food-card">
+        <div class="icon">🦑</div>
+        <h3>Squid Ink Paella</h3>
+        <p>A tribute to his father, who spent thirty years fishing the Atlantic coast. "Every bite tastes like a Sunday morning at sea."</p>
+      </div>
+      <div class="food-card">
+        <div class="icon">🍮</div>
+        <h3>Burnt Basque Cheesecake</h3>
+        <p>His most requested recipe. José swears the secret is playing flamenco in the kitchen while it bakes. "The vibrations do something."</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-section">
+    <blockquote>"I never wanted to be famous. I wanted to be felt. There's a difference."</blockquote>
+    <cite>— José Ramirez, Noche Sin Fin liner notes, 2023</cite>
+  </div>
+
+  <section>
+    <h2>📅 Life in Chapters</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">1986</div>
+        <h3>Born in Triana, Seville</h3>
+        <p>Youngest of four children. His mother, a flamenco dancer, put a guitar in his hands at age six.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2004</div>
+        <h3>Moves to Madrid, signs first record deal</h3>
+        <p>At 18, signs with a small independent label. Spends three years playing every venue in the city.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2011</div>
+        <h3>Releases "Sangre y Sal"</h3>
+        <p>Debut album goes gold in Spain and Portugal. Tours Europe for two years straight.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2015</div>
+        <h3>Opens Casa Ramirez, Seville</h3>
+        <p>Walks away from a major label deal to open a 22-seat tapas restaurant in his home neighbourhood.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2019</div>
+        <h3>Year in Tokyo</h3>
+        <p>A residency that changed everything. Studies Japanese fermentation techniques. Returns with a new sound and a second restaurant concept.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2023</div>
+        <h3>"Noche Sin Fin" — album of the year</h3>
+        <p>His most personal record yet. Recorded entirely in his kitchen at 3am, between restaurant shifts.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="socials">🎸 🍳 🌍</div>
+    <p>© 2026 José Ramirez · All rights reserved · Seville, Spain</p>
+  </footer>
+
+</body>
+</html>
