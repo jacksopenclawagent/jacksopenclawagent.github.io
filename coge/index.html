@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — NYC Mayor Creates COGE</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #cc0000; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #aa0000; }
+    .breaking-label { background: #fff; color: #cc0000; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+
+    /* COGE LOGO */
+    .logo-showcase {
+      background: linear-gradient(135deg, #0a1628, #1a2a4a);
+      border-radius: 8px;
+      padding: 40px 20px;
+      text-align: center;
+      margin-bottom: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .logo-showcase::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,100,255,0.1), transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      border-radius: 50%;
+    }
+    .coge-logo {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .coge-emblem {
+      width: 110px; height: 110px;
+      background: linear-gradient(135deg, #1a3a7a, #0d2250);
+      border: 3px solid #4a7fd4;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      box-shadow: 0 0 30px rgba(74,127,212,0.4), inset 0 0 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .coge-emblem::after {
+      content: '';
+      position: absolute;
+      width: 124px; height: 124px;
+      border: 1px solid rgba(74,127,212,0.3);
+      border-radius: 50%;
+    }
+    .coge-emblem .gear { font-size: 2.8rem; line-height: 1; }
+    .coge-wordmark {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(74,127,212,0.5);
+    }
+    .coge-wordmark span { color: #4a7fd4; }
+    .coge-fullname {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+    .coge-tagline {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: #4a7fd4;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(74,127,212,0.3);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .infobox { background: #f0f4ff; border: 1px solid #c8d8f0; border-left: 4px solid #1a3a7a; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #1a3a7a; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    .ad-box { background: #eee; border: 1px dashed #bbb; text-align: center; padding: 30px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; color: #999; margin-top: 24px; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Wednesday, May 28, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#" class="active">Politics</a>
+    <a href="#">World</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">BREAKING</span>
+    <span>NYC Mayor announces Commission on Government Efficiency — COGE — pledging $4 billion in savings over three years</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Politics · New York City</div>
+
+      <h2>NYC Mayor Launches COGE — The Commission on Government Efficiency — in Sweeping City Hall Overhaul</h2>
+
+      <p class="deck">In the most ambitious restructuring of New York City government in two decades, Mayor Daniel J. Weston announced the creation of the Commission on Government Efficiency on Wednesday morning — promising to eliminate waste, slash bureaucratic red tape, and deliver $4 billion in savings to New York taxpayers by 2029.</p>
+
+      <div class="byline">
+        <span>By <strong>Rachel Okonkwo</strong>, City Hall Correspondent</span>
+        <span>Published: May 28, 2026 · 8:00 AM EDT | Updated 12:30 PM EDT</span>
+      </div>
+
+      <!-- COGE LOGO -->
+      <div class="logo-showcase">
+        <div class="coge-logo">
+          <div class="coge-emblem">
+            <span class="gear">⚙️</span>
+          </div>
+          <div class="coge-wordmark">C<span>O</span>GE</div>
+          <div class="coge-fullname">Commission on Government Efficiency</div>
+          <div class="coge-tagline">City of New York · Est. 2026 · Efficiency · Accountability · Results</div>
+        </div>
+      </div>
+      <p class="hero-caption">The official seal of the Commission on Government Efficiency, unveiled at City Hall Wednesday morning. (The Global Tribune / City of New York)</p>
+
+      <div class="article-body">
+
+        <p>Standing before a packed City Hall press room on Wednesday, Mayor Daniel J. Weston unveiled what he called "the most significant reform of how this city spends its money since the fiscal crisis of the 1970s." The Commission on Government Efficiency — COGE — will have sweeping authority to audit every city agency, renegotiate contracts, eliminate duplicate functions, and recommend structural changes to the city's $115 billion annual budget.</p>
+
+        <p>"New Yorkers work hard for their money," the Mayor said. "They deserve a government that works just as hard with it. COGE is our commitment to them that every dollar spent by this city is a dollar spent wisely." The announcement was met with applause from administration officials seated in the front rows and a more cautious reception from the city council members present, several of whom raised immediate questions about oversight and scope.</p>
+
+        <div class="pull-quote">
+          "New Yorkers work hard for their money. They deserve a government that works just as hard with it."
+          <cite>— Mayor Daniel J. Weston, City Hall Press Conference</cite>
+        </div>
+
+        <p>COGE will be led by former McKinsey partner and city budget director Dr. Sandra Osei-Mensah, 49, who previously oversaw a $1.2 billion efficiency drive at the Metropolitan Transportation Authority. She will report directly to the Mayor and will have access to financial records across all 40 city agencies. The commission is expected to be fully staffed — with a team of 60 analysts, auditors, and policy specialists — within 90 days.</p>
+
+        <p>The commission's mandate is broad. In the first phase, running through the end of 2026, COGE will conduct a line-by-line audit of the city's ten largest agencies — including the NYPD, the Department of Education, and the Department of Social Services — which together account for 74% of total city spending. Phase two, beginning in January 2027, will turn to procurement: the city spends an estimated $22 billion annually on contracts with private vendors, a process that independent watchdogs have repeatedly identified as vulnerable to inefficiency and, in some cases, fraud.</p>
+
+        <div class="infobox">
+          <h4>COGE at a Glance</h4>
+          <ul>
+            <li><strong>Full name:</strong> Commission on Government Efficiency</li>
+            <li><strong>Established:</strong> May 28, 2026</li>
+            <li><strong>Chair:</strong> Dr. Sandra Osei-Mensah, former MTA Budget Director</li>
+            <li><strong>Staff:</strong> 60 analysts, auditors and policy specialists</li>
+            <li><strong>Mandate:</strong> Audit all 40 city agencies; renegotiate vendor contracts; eliminate duplication</li>
+            <li><strong>Target savings:</strong> $4 billion by end of 2029</li>
+            <li><strong>Reporting to:</strong> Mayor's Office, with quarterly public reports to City Council</li>
+            <li><strong>Budget:</strong> $18 million annually</li>
+          </ul>
+        </div>
+
+        <p>The announcement has drawn comparisons — some flattering, some pointed — to the federal Department of Government Efficiency established in Washington earlier this year. Mayor Weston was careful to distance COGE from that model. "This is not about ideology," he said. "This is not about cutting services that New Yorkers rely on. This is about making sure the money we already have goes further." Dr. Osei-Mensah echoed that framing, stressing that COGE would operate through "evidence, data, and consultation — not a chainsaw."</p>
+
+        <p>Union leaders were not immediately reassured. The president of District Council 37, which represents 150,000 city workers, issued a statement within the hour warning against "efficiency exercises that are efficiency in name only — a cover for austerity and layoffs." The Mayor's office responded that COGE's mandate explicitly excludes recommendations that would result in frontline service reductions, though critics note that such commitments are difficult to enforce once a commission begins operating.</p>
+
+        <div class="pull-quote">
+          "This is not about cutting services New Yorkers rely on. This is about making sure the money we already have goes further."
+          <cite>— Dr. Sandra Osei-Mensah, COGE Chair</cite>
+        </div>
+
+        <p>The City Council, which must approve any budget changes arising from COGE's recommendations, offered a mixed response. Council Speaker Imani Rhodes called the initiative "long overdue in principle" but announced the Council would establish its own oversight subcommittee to monitor COGE's work. "We welcome efficiency," Rhodes said. "We do not welcome a commission that operates as an arm of the executive without meaningful checks."</p>
+
+        <p>COGE is expected to issue its first public report — a preliminary assessment of city agency structures — in September. Its first formal recommendations are due to the Mayor by December 31, 2026. Whether those recommendations will survive contact with the political realities of New York City government remains, as one senior City Hall aide put it privately, "the $4 billion question."</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>More on This Story</h3>
+      <div class="sidebar-story">
+        <h4>Who Is Dr. Sandra Osei-Mensah? The Woman Tasked With Reforming City Hall</h4>
+        <p>The new COGE chair has a reputation for ruthless precision and zero tolerance for bureaucratic inertia.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>City Unions Warn COGE Could Be "Austerity by Another Name"</h4>
+        <p>District Council 37 president vows to "fight every step of the way" if frontline workers are threatened.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Council Speaker Rhodes Announces COGE Oversight Subcommittee</h4>
+        <p>The City Council is not prepared to let the Mayor's new commission operate without legislative scrutiny.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>NYC's $115 Billion Budget: Where Does the Money Actually Go?</h4>
+        <p>A Tribune breakdown of the city's spending — and where efficiency experts say the biggest gains are hiding.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Past City Efficiency Drives: A Graveyard of Good Intentions?</h4>
+        <p>New York has launched similar initiatives before. The results have been mixed, to put it charitably.</p>
+      </div>
+      <div class="ad-box">ADVERTISEMENT</div>
+      <br>
+      <h3>Related</h3>
+      <div class="sidebar-story">
+        <h4>Federal DOGE vs. NYC COGE: What's the Difference?</h4>
+        <p>The Mayor was careful to draw a distinction. Analysts are less sure the two models are as different as claimed.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Opinion: COGE Is Either the Best Thing to Happen to NYC Governance — or the Worst</h4>
+        <p>It depends entirely on who's in charge and whether anyone has the nerve to implement what it finds.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. All persons, events and organisations described are entirely fictitious.</p>
+  </footer>
+
+</body>
+</html>
