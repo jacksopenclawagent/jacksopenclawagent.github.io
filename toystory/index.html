@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — Taylor Swift Joins Toy Story 5</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #cc0000; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #aa0000; }
+    .breaking-label { background: #fff; color: #cc0000; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+
+    /* HERO IMAGE */
+    .hero-image {
+      width: 100%;
+      background: linear-gradient(135deg, #2d1b4e, #4a1942, #8B0000);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image::before {
+      content: '★ ★ ★ ★ ★';
+      position: absolute;
+      top: 10px; left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,215,0,0.15);
+      font-size: 2rem;
+      letter-spacing: 1rem;
+    }
+    .hero-chars {
+      display: flex;
+      align-items: flex-end;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-char {
+      text-align: center;
+    }
+    .hero-char .char-emoji { font-size: 4rem; display: block; }
+    .hero-char .char-name {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+    .vs-text {
+      font-family: Impact, sans-serif;
+      font-size: 2rem;
+      color: #ffd700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+    }
+    .film-title {
+      font-family: Impact, Arial Black, sans-serif;
+      font-size: 2.2rem;
+      color: #ffd700;
+      letter-spacing: 0.05em;
+      text-shadow: 2px 2px 0 #8B0000, 4px 4px 0 rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1;
+    }
+    .film-sub {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .infobox { background: #fdf5ff; border: 1px solid #e0c8f0; border-left: 4px solid #7b2d8b; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #7b2d8b; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .char-profile { background: #fff; border: 1px solid #ddd; border-radius: 12px; padding: 24px; margin: 24px 0; display: flex; gap: 20px; align-items: flex-start; }
+    .char-avatar { font-size: 3.5rem; flex-shrink: 0; background: linear-gradient(135deg, #f8e8ff, #ffd6e0); border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+    .char-details h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .char-details .char-sub { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+    .char-details p { font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; color: #555; line-height: 1.6; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    .ad-box { background: #eee; border: 1px dashed #bbb; text-align: center; padding: 30px 10px; font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; color: #999; margin-top: 24px; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Saturday, May 30, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#" class="active">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">EXCLUSIVE</span>
+    <span>Taylor Swift confirmed for Toy Story 5 — her character "Sarah" is described as "a love triangle the internet will not survive"</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Culture · Film · Entertainment</div>
+
+      <h2>Taylor Swift Joins Toy Story 5 as "Sarah" — The Glamorous New Toy Who Sets Her Sights on Woody</h2>
+
+      <p class="deck">In the casting announcement nobody saw coming but everybody immediately understood, Pixar has confirmed that Taylor Swift will voice a brand new character in Toy Story 5 — a sophisticated, guitar-strumming cowgirl doll named Sarah who arrives in Andy's old room and promptly makes Jessie's life very complicated.</p>
+
+      <div class="byline">
+        <span>By <strong>Cassandra Bell</strong>, Entertainment Correspondent</span>
+        <span>Published: May 30, 2026 · 9:00 AM EDT | Updated 2:15 PM EDT</span>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-chars">
+          <div class="hero-char">
+            <span class="char-emoji">🤠</span>
+            <span class="char-name">Woody</span>
+          </div>
+          <div class="vs-text">💘</div>
+          <div class="hero-char">
+            <span class="char-emoji" style="font-size:5rem;">🎸</span>
+            <span class="char-name">Sarah</span>
+          </div>
+          <div class="vs-text">⚔️</div>
+          <div class="hero-char">
+            <span class="char-emoji">🤠</span>
+            <span class="char-name">Jessie</span>
+          </div>
+        </div>
+        <div class="film-title">TOY STORY 5</div>
+        <div class="film-sub">Coming Summer 2027 · Pixar Animation Studios</div>
+      </div>
+      <p class="hero-caption">The central love triangle of Toy Story 5 — Woody, the new arrival Sarah (voiced by Taylor Swift), and Jessie. Pixar describes the dynamic as "emotionally devastating." (The Global Tribune / Pixar)</p>
+
+      <div class="article-body">
+
+        <p>Pixar has never been afraid to make audiences cry. With the casting of Taylor Swift as Sarah in Toy Story 5, they appear to be aiming for something beyond crying — something closer to a full civilisational reckoning. The announcement, dropped on a Friday morning with characteristic Pixar precision, immediately became the most discussed entertainment news story of the year, generating 14 million social media posts within six hours and crashing the Fandango pre-booking server before a single trailer had been released.</p>
+
+        <p>Sarah is, by all accounts, a toy unlike any Andy's old room — now belonging to his niece, Maisie — has ever seen. A limited-edition acoustic cowgirl doll with a miniature working guitar, long golden hair, and a backstory involving a cancelled tour and a broken heart, she arrives with the kind of confidence that immediately unsettles the existing social order of the toy box. That social order, of course, includes one Sheriff Woody Pride and his long-established bond with Jessie the cowgirl.</p>
+
+        <div class="pull-quote">
+          "Sarah doesn't think she's doing anything wrong. That's what makes her so compelling — and so dangerous to everyone around her."
+          <cite>— Pete Docter, Pixar Chief Creative Officer</cite>
+        </div>
+
+        <p>"Sarah is not a villain," Pixar's Chief Creative Officer Pete Docter was careful to stress in a statement accompanying the announcement. "She's a toy who has been through something, who arrives somewhere new, and who connects with someone in a way she doesn't fully understand. She doesn't think she's doing anything wrong. That's what makes her so compelling — and so dangerous to everyone around her."</p>
+
+        <p>That "someone" is Woody. According to sources close to the production who spoke to The Global Tribune on background, the emotional core of Toy Story 5 revolves around Sarah and Woody discovering a shared history neither expected — both were made in the same factory, in the same year, as part of the same "Roundup" toy line that Woody learned about back in Toy Story 2. Sarah, it turns out, was the doll Woody was always supposed to be paired with. She just never made it to Andy's room. Until now.</p>
+
+        <div class="char-profile">
+          <div class="char-avatar">🎸</div>
+          <div class="char-details">
+            <h4>Sarah</h4>
+            <div class="char-sub">Voiced by Taylor Swift · Toy Story 5 · Pixar, 2027</div>
+            <p>A limited-edition acoustic cowgirl doll from the original Woody's Roundup collection. Sweet-natured, musically gifted, and utterly unaware of the havoc her arrival causes. Her signature accessory is a tiny working guitar. Her signature song, written by Swift herself for the film, is titled <em>"You Were Always Mine (You Just Didn't Know It)."</em></p>
+          </div>
+        </div>
+
+        <p>For Jessie — voiced once again by Joan Cusack in what sources describe as "her most emotionally demanding performance in the franchise" — Sarah's arrival is an existential crisis. Jessie and Woody's relationship has always been the emotional bedrock of the toy box. The introduction of Sarah doesn't just threaten that bond; it reframes it, asking whether the life Woody built was always shadowed by something unfinished.</p>
+
+        <p>"Jessie isn't wrong to feel what she feels," Docter said in a separate interview with Entertainment Weekly. "And Sarah isn't wrong either. That's the whole point. This isn't a story about who the villain is. It's a story about how good people — good toys — can hurt each other without meaning to."</p>
+
+        <div class="infobox">
+          <h4>Toy Story 5 — Key Details</h4>
+          <ul>
+            <li><strong>Release date:</strong> June 19, 2027 (confirmed)</li>
+            <li><strong>Director:</strong> Angus MacLane (co-director, Lightyear)</li>
+            <li><strong>New cast:</strong> Taylor Swift as Sarah</li>
+            <li><strong>Returning cast:</strong> Tom Hanks (Woody), Tim Allen (Buzz), Joan Cusack (Jessie), Annie Potts (Bo Peep)</li>
+            <li><strong>Original song:</strong> "You Were Always Mine (You Just Didn't Know It)" — written and performed by Taylor Swift</li>
+            <li><strong>Setting:</strong> A new child's bedroom — Andy's niece Maisie, age 7</li>
+            <li><strong>Plot description (official):</strong> "A new arrival changes everything the toys thought they knew about belonging."</li>
+          </ul>
+        </div>
+
+        <p>Swift herself has been characteristically strategic in her public comments, posting a single image on Instagram — a tiny cowboy hat next to a tiny guitar — with no caption, which proceeded to generate 8.3 million likes in under an hour. In a brief statement released through her publicist, she described voicing Sarah as "a dream I didn't know I had," adding: "She's complicated and hopeful and a little heartbreaking. She reminds me of a lot of songs I've written."</p>
+
+        <p>The internet, predictably, has already sorted itself into camps. "Team Jessie" merchandise began appearing on Etsy within hours of the announcement. A rival "Team Sarah" faction emerged almost simultaneously. At least three fan accounts dedicated entirely to the Woody-Sarah-Jessie triangle have amassed over 100,000 followers before a single frame of footage has been released. Pixar, watching all of this unfold, has said nothing further. They have, after all, done this before. They know exactly what they're doing.</p>
+
+        <p>Toy Story 5 opens in cinemas on June 19, 2027. Tissues are recommended.</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>More on This Story</h3>
+      <div class="sidebar-story">
+        <h4>"Team Jessie vs Team Sarah" — The Internet Has Already Chosen Sides</h4>
+        <p>Merchandise, fan art, and passionate arguments — all before a single trailer has dropped.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Taylor Swift's Original Song for Toy Story 5 Could Be Her First Oscar Contender</h4>
+        <p>Industry insiders say "You Were Always Mine" is already the frontrunner for Best Original Song.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Joan Cusack on Reprising Jessie: "It's the Hardest Thing I've Ever Done"</h4>
+        <p>The actress opens up about what it means to voice a character facing the biggest challenge of her toy life.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Tom Hanks: "Woody Has Never Been in a Story Like This Before"</h4>
+        <p>The veteran actor says Toy Story 5 pushed him to places the franchise has never gone.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>The Woody's Roundup Lore Explained: How Sarah Fits Into Toy Story History</h4>
+        <p>Everything you need to know about the in-universe mythology that makes Sarah's arrival so emotionally loaded.</p>
+      </div>
+      <div class="ad-box">ADVERTISEMENT</div>
+      <br>
+      <h3>More Culture</h3>
+      <div class="sidebar-story">
+        <h4>Cannes 2026: The Films That Defined the Festival</h4>
+        <p>From the Palme d'Or controversy to the surprise standing ovations — our complete review.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>The Summer Blockbuster Season Is Back. Here's What to Watch.</h4>
+        <p>Our critics pick the ten films you absolutely cannot miss between now and September.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. All persons, events and productions described are entirely fictitious.</p>
+  </footer>
+
+</body>
+</html>
