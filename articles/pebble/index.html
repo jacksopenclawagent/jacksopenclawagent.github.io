@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — Florida's Viral Baby Antelope</title>
+  <meta property="og:title" content="Meet Pebble: The Baby Antelope Breaking the Internet" />
+  <meta property="og:description" content="A newborn antelope at a Florida wildlife sanctuary looks so much like a koala-deer hybrid that the internet has collectively lost its mind." />
+  <meta property="og:image" content="antelope.jpg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .viral-banner { background: #ff6b35; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; }
+    .viral-label { background: #fff; color: #ff6b35; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .hero-image { width: 100%; margin-bottom: 8px; border-radius: 4px; overflow: hidden; }
+    .hero-image img { width: 100%; height: auto; display: block; }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .inline-image { margin: 28px 0; }
+    .inline-image img { width: 100%; border-radius: 6px; display: block; }
+    .inline-image p { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-top: 8px; font-style: italic; }
+    .viral-stats { background: #fff8f0; border: 1px solid #f0dcc0; border-left: 4px solid #ff6b35; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .viral-stats h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ff6b35; margin-bottom: 12px; font-weight: 700; }
+    .viral-stats ul { padding-left: 18px; }
+    .viral-stats ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    .sidebar-img { width: 100%; border-radius: 8px; margin-bottom: 16px; overflow: hidden; }
+    .sidebar-img img { width: 100%; display: block; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Sunday, May 31, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#" class="active">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="viral-banner">
+    <span class="viral-label">VIRAL</span>
+    <span>Florida baby antelope "Pebble" breaks 200 million views across social media in under 48 hours</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Culture · Viral · Wildlife</div>
+
+      <h2>Meet Pebble: The Florida Baby Antelope the Entire Internet Has Fallen For</h2>
+
+      <p class="deck">A newborn antelope at a Florida wildlife sanctuary has broken the internet — and possibly the cuteness scale — after footage of the tiny creature went viral worldwide. With the fluffy grey coat of a koala, the wide dark eyes of a deer, and wobbly legs that suggest it hasn't fully committed to the concept of walking yet, Pebble has been declared the cutest animal of 2026. The first serious challenger to Moo Deng's crown has arrived.</p>
+
+      <div class="byline">
+        <span>By <strong>Tara Oyelaran</strong>, Culture & Viral Correspondent</span>
+        <span>Published: May 31, 2026 · 8:00 AM EDT | Updated 1:30 PM EDT</span>
+      </div>
+
+      <div class="hero-image">
+        <img src="antelope.jpg" alt="Pebble the baby antelope at Suncoast Wildlife Sanctuary, Florida" />
+      </div>
+      <p class="hero-caption">Pebble, a newborn Grey Rhebok antelope, photographed at the Suncoast Wildlife Sanctuary in Sarasota, Florida. The internet has not recovered. (Suncoast Wildlife Sanctuary / via The Global Tribune)</p>
+
+      <div class="article-body">
+
+        <p>It takes a special kind of animal to stop the internet in its tracks. Grumpy Cat did it. Moo Deng the pygmy hippo did it. And now, in the early hours of a Friday morning at the Suncoast Wildlife Sanctuary in Sarasota, Florida, a tiny antelope named Pebble has done it — with nothing more than a fluffy grey coat, a pair of impossibly round eyes, and the slightly bewildered expression of a creature who has been alive for approximately six hours and is not yet sure what to make of any of this.</p>
+
+        <p>Pebble is a Grey Rhebok — a species of antelope native to South Africa, rarely seen in the United States — born in the early hours of Thursday morning to mother Sage, a six-year-old female who has been a resident of the sanctuary since 2021. At birth, Pebble weighed just 3.2 kilograms. What she lacked in size she more than made up for in visual impact.</p>
+
+        <div class="pull-quote">
+          "I've worked with animals for nineteen years. I have never seen anything that looked quite like this. She looks like a koala made a wish on a shooting star and became a deer."
+          <cite>— Dr. Renata Solís, Senior Zoologist, Suncoast Wildlife Sanctuary</cite>
+        </div>
+
+        <p>The sanctuary posted a 40-second clip of Pebble taking her first wobbly steps on Friday morning. By Friday evening it had 12 million views on TikTok. By Saturday morning it had crossed 80 million across platforms. As of Sunday, the figure stands at over 200 million — making Pebble's debut video one of the fastest-spreading animal clips ever recorded, surpassing the original Moo Deng footage from Thailand in 2024.</p>
+
+        <p>The comparison to Moo Deng — the pygmy hippopotamus who became a global sensation and Thailand's most famous animal — has been unavoidable. "Moo Deng changed what we thought was possible in terms of an animal going viral," said Dr. Preet Sharma, a digital culture researcher at the University of Miami who has been tracking Pebble's spread. "Pebble is doing something slightly different. People aren't just sharing her because she's cute. They're sharing her because they genuinely cannot believe she's real."</p>
+
+        <div class="inline-image">
+          <img src="antelope.jpg" alt="Pebble looking directly at the camera" />
+          <p>The image that started it all — Pebble, hours old, looking directly at the camera with an expression described by one commenter as "simultaneously ancient and brand new." (Suncoast Wildlife Sanctuary)</p>
+        </div>
+
+        <div class="viral-stats">
+          <h4>📱 Pebble By The Numbers</h4>
+          <ul>
+            <li><strong>200M+</strong> combined video views across TikTok, Instagram, X, and YouTube</li>
+            <li><strong>#Pebble2026</strong> trending in 47 countries within 24 hours of first post</li>
+            <li><strong>3.8M</strong> Instagram followers for the sanctuary — up from 12,000 before Friday</li>
+            <li><strong>"Cutest animal since Moo Deng"</strong> — the phrase has appeared in over 6 million posts</li>
+            <li><strong>14 countries</strong> have featured Pebble in mainstream news broadcasts</li>
+          </ul>
+        </div>
+
+        <p>What has captivated people most is Pebble's appearance — specifically, the way she manages to look like two completely different animals at once. Her coat is a dense, soft grey — the kind associated with koalas, not African antelopes. Her face, however, is unmistakably deer-like: wide-set, liquid dark eyes, a small button nose, and outsized rounded ears that she hasn't quite grown into yet. The result is something the internet has collectively decided looks like "a koala and a deer had a baby" — a description that has appeared in some variation in nearly every major comment section, across every language.</p>
+
+        <p>"She's a Grey Rhebok, which are known for their unusual woolly coats," Dr. Solís explained in a video posted to the sanctuary's now-enormous Instagram account. "The texture makes them look much softer and rounder than most antelopes. Combined with those big eyes at this age — yes, I understand why people are reacting the way they are. She is objectively extraordinary."</p>
+
+        <div class="pull-quote">
+          "People aren't just sharing her because she's cute. They're sharing her because they genuinely cannot believe she's real."
+          <cite>— Dr. Preet Sharma, University of Miami</cite>
+        </div>
+
+        <p>The sanctuary, which was not prepared for what Friday morning would bring, has been scrambling ever since. Their website crashed twice under traffic. Their merchandise store — selling Suncoast tote bags and animal adoption certificates — sold out within hours. A dedicated Pebble adoption package, added hastily on Saturday, raised over $180,000 for the sanctuary's conservation programmes in its first day.</p>
+
+        <p>As for Pebble herself — she is, by all accounts, thriving. She is nursing well, gaining weight steadily, and has graduated from "not entirely sure about legs" to "cautiously optimistic about legs" in the 72 hours since her birth. She remains blissfully unaware that 200 million people have watched her wobble. She has not, as yet, commented on the comparisons to Moo Deng.</p>
+
+        <p>The internet, for its part, has already begun debating whether Pebble or Moo Deng holds the true 2026 cuteness crown. It is, frankly, an impossible argument to resolve. But it is a very good problem to have.</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>Most Read</h3>
+
+      <div class="sidebar-img">
+        <img src="antelope.jpg" alt="Pebble the baby antelope" />
+      </div>
+
+      <div class="sidebar-story">
+        <h4>Suncoast Sanctuary Website Crashes Twice as Pebble Goes Global</h4>
+        <p>The Florida facility was not prepared for 200 million viewers. Their IT team has been awake since Friday.</p>
+      </div>
+
+      <div class="sidebar-story">
+        <h4>Moo Deng vs Pebble: The Internet's Cutest Animal Debate of 2026</h4>
+        <p>Two extraordinary animals, two continents, one impossible question. Our writers attempt to settle it.</p>
+      </div>
+
+      <div class="sidebar-story">
+        <h4>What Is a Grey Rhebok? The Rare Antelope Species Nobody Had Heard of on Thursday</h4>
+        <p>Native to South Africa and rarely exhibited in the US, the Grey Rhebok is having its moment.</p>
+      </div>
+
+      <div class="sidebar-story">
+        <h4>Pebble Merchandise Sells Out in Hours as Sanctuary Raises $180,000</h4>
+        <p>The Suncoast Wildlife Sanctuary's adoption programme has been overwhelmed with donations from around the world.</p>
+      </div>
+
+      <div class="sidebar-story">
+        <h4>"She Looks Like a Koala Made a Wish" — The Best Internet Reactions to Pebble</h4>
+        <p>A roundup of the comments, memes, and genuine expressions of joy that have flooded social media since Friday.</p>
+      </div>
+
+      <br>
+      <h3>Also in Culture</h3>
+
+      <div class="sidebar-story">
+        <h4>Taylor Swift Joins Toy Story 5 as Sarah — The Character Set to Break Woody and Jessie</h4>
+        <p>The casting announcement nobody saw coming but everybody immediately understood.</p>
+      </div>
+
+      <div class="sidebar-story">
+        <h4>Cannes 2026: AI Co-Director Wins the Palme d'Or in Historic First</h4>
+        <p>The film world divided. The jury unmoved. The conversation just getting started.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. All persons, events and organisations described are entirely fictitious.</p>
+  </footer>
+
+</body>
+</html>
