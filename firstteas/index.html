@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>First Teas — Hard Tea For The First Tee</title>
+  <link rel="icon" type="image/jpeg" href="can.jpg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green-dark: #1a3a1a;
+      --green-mid: #2d5a2d;
+      --green-light: #4a8c3f;
+      --green-bright: #5cb85c;
+      --gold: #c8a84b;
+      --gold-light: #e8c96a;
+      --cream: #f8f5ee;
+      --white: #ffffff;
+      --text: #1a2a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: rgba(26,58,26,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+    }
+
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.5px;
+      font-style: italic;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      color: rgba(248,245,238,0.7);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green-dark);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); background: var(--gold-light); }
+
+    @media (max-width: 700px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to bottom, rgba(26,58,26,0.7) 0%, rgba(26,58,26,0.3) 50%, rgba(26,58,26,0.8) 100%),
+        url('can.jpg') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,168,75,0.15);
+      border: 1px solid rgba(200,168,75,0.4);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero .tagline {
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: rgba(248,245,238,0.85);
+      margin-bottom: 36px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(248,245,238,0.65);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+
+    .hero-buttons {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-dark);
+      border: none;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(200,168,75,0.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.4);
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .scroll-hint {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bob 2s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* STORY */
+    .story {
+      background: var(--white);
+      padding: 100px 20px;
+    }
+
+    .story-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) { .story-inner { grid-template-columns: 1fr; } }
+
+    .story-text .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 12px;
+    }
+
+    .story-text h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--green-dark);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .story-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 16px;
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(26,58,26,0.15);
+    }
+
+    .story-image::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      opacity: 0.3;
+    }
+
+    /* PRODUCT */
+    .product {
+      background: var(--green-dark);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .product .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .product h2 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .product > p {
+      color: rgba(248,245,238,0.6);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 60px;
+      line-height: 1.7;
+    }
+
+    .can-showcase {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .can-item {
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .can-item:hover { transform: translateY(-12px); }
+
+    .can-item img {
+      height: 280px;
+      width: auto;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    }
+
+    .can-item.featured img { height: 340px; }
+
+    .can-item h3 {
+      margin-top: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .can-item p {
+      font-size: 0.78rem;
+      color: rgba(248,245,238,0.5);
+      margin-top: 4px;
+    }
+
+    .can-item .coming-soon {
+      display: inline-block;
+      background: rgba(200,168,75,0.15);
+      border: 1px solid rgba(200,168,75,0.3);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 3px 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* WHY */
+    .why {
+      background: var(--cream);
+      padding: 100px 20px;
+    }
+
+    .why-inner { max-width: 1000px; margin: 0 auto; }
+
+    .why .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .why h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--green-dark);
+      text-align: center;
+      margin-bottom: 56px;
+      letter-spacing: -1px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 24px;
+      border-bottom: 3px solid var(--green-light);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,58,26,0.1); }
+
+    .why-card .icon { font-size: 2.4rem; margin-bottom: 16px; display: block; }
+    .why-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; color: var(--green-dark); }
+    .why-card p { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+    /* ORIGIN */
+    .origin {
+      background: linear-gradient(135deg, var(--green-dark), #0d2a0d);
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .origin::before {
+      content: '☘️';
+      position: absolute;
+      font-size: 20rem;
+      opacity: 0.03;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .origin .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .origin h2 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .origin p {
+      font-size: 1.05rem;
+      color: rgba(248,245,238,0.7);
+      max-width: 620px;
+      margin: 0 auto 16px;
+      line-height: 1.8;
+    }
+
+    .origin-flags {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .flag-pill {
+      background: rgba(200,168,75,0.1);
+      border: 1px solid rgba(200,168,75,0.25);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0d1a0d;
+      padding: 50px 20px 30px;
+      text-align: center;
+      border-top: 1px solid rgba(200,168,75,0.15);
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-tagline {
+      font-family: Georgia, serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(248,245,238,0.4);
+      margin-bottom: 30px;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: rgba(248,245,238,0.3);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo"><em>first <span>teas</span></em></div>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#product">The Can</a>
+      <a href="#why">Why Us</a>
+      <a href="#origin">Ireland</a>
+    </div>
+    <button class="nav-cta">Find a Stockist</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">⛳ Hard Tea · Born in Ireland</div>
+    <h1><em>first<br/><span>teas</span></em></h1>
+    <p class="tagline">For the First Tee.</p>
+    <p class="hero-sub">The hard tea built for golfers, crafted in Ireland, and shipped to greens around the world. Crack one open before the round. You've earned it.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary">⛳ Find Near You</button>
+      <button class="btn-outline">Our Story</button>
+    </div>
+    <div class="scroll-hint">↓ Scroll</div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="story-inner">
+      <div class="story-text">
+        <div class="section-label">Our Story</div>
+        <h2>Started on the First Tee. Built for Every Tee.</h2>
+        <p>First Teas was born from a simple idea on a grey Irish morning: there was no drink made specifically for golfers. Beer was too heavy. Water was too boring. Energy drinks were all wrong. So we made our own.</p>
+        <p>Founded in Ireland — where the greens are older than the game itself — First Teas is a hard tea with 5% ABV, naturally flavoured, and designed to be cracked open at the first tee box. Light enough to carry you through 18 holes. Good enough that you'll want another at the 19th.</p>
+        <p>We started small. Now we're shipping to golf clubs, sports bars, and pro shops around the world. The first tee looks a little different with a First Teas in hand.</p>
+      </div>
+      <div class="story-image">
+        <img src="can.jpg" alt="First Teas Lemon Hard Tea Can" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section class="product" id="product">
+    <div class="section-label">The Range</div>
+    <h2>Hard Tea. Naturally Flavoured.</h2>
+    <p>5% ABV · 355ml · Brewed with real tea · No artificial nonsense</p>
+
+    <div class="can-showcase">
+      <div class="can-item">
+        <img src="can.jpg" alt="First Teas Peach" />
+        <h3>Peach</h3>
+        <p>Coming Soon</p>
+        <span class="coming-soon">2026</span>
+      </div>
+      <div class="can-item featured">
+        <img src="can.jpg" alt="First Teas Lemon" />
+        <h3>Lemon</h3>
+        <p>Available Now</p>
+      </div>
+      <div class="can-item">
+        <img src="can.jpg" alt="First Teas Raspberry" />
+        <h3>Raspberry</h3>
+        <p>Coming Soon</p>
+        <span class="coming-soon">2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div class="section-label">Why First Teas</div>
+      <h2>Built Different. Brewed Better.</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="icon">🍋</span>
+          <h3>Naturally Flavoured</h3>
+          <p>Real tea. Real fruit flavour. No artificial colours, no fake sweeteners. Just clean, crisp hard tea the way it should be.</p>
+        </div>
+        <div class="why-card">
+          <span class="icon">⛳</span>
+          <h3>Made for the Course</h3>
+          <p>Light enough to drink on the move. Refreshing enough for a warm afternoon on the back nine. The official drink of the first tee.</p>
+        </div>
+        <div class="why-card">
+          <span class="icon">☘️</span>
+          <h3>Born in Ireland</h3>
+          <p>Founded on the island that invented the art of taking golf seriously and not seriously at the same time. That spirit is in every can.</p>
+        </div>
+        <div class="why-card">
+          <span class="icon">🌍</span>
+          <h3>Going Global</h3>
+          <p>From Irish links to courses across Europe, the US, and beyond. First Teas is finding its way onto greens around the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN -->
+  <section class="origin" id="origin">
+    <div class="section-label">Where We're From</div>
+    <h2>Irish Roots. Global Greens.</h2>
+    <p>We started on an Irish golf course with a problem nobody had solved. The drink you want before the first tee didn't exist. So we built it.</p>
+    <p>Ireland has given the world Guinness, whiskey, and some of the most beautiful links courses on earth. We're adding one more thing to that list.</p>
+
+    <div class="origin-flags">
+      <div class="flag-pill">🇮🇪 Founded in Ireland</div>
+      <div class="flag-pill">🇬🇧 Available in the UK</div>
+      <div class="flag-pill">🇺🇸 Launching in the US</div>
+      <div class="flag-pill">🌍 More Coming Soon</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><em>first <span>teas</span></em></div>
+    <div class="footer-tagline">For the First Tee.</div>
+    <p>© 2026 First Teas Ltd. Founded in Ireland. All rights reserved.</p>
+    <p style="margin-top:8px;">5% ABV. Please drink responsibly. Must be of legal drinking age.</p>
+  </footer>
+
+</body>
+</html>
