@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — Ralph Rings the Nasdaq Bell</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #cc0000; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #aa0000; }
+    .breaking-label { background: #fff; color: #cc0000; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .hero-image { width: 100%; background: linear-gradient(135deg, #002060, #0040a0); border-radius: 4px; margin-bottom: 8px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; }
+    .hero-image .hero-emoji { font-size: 5rem; }
+    .hero-image .hero-label { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .infobox { background: #f0f4ff; border: 1px solid #c8d8f0; border-left: 4px solid #002060; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #002060; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Wednesday, July 15, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#" class="active">Business</a>
+    <a href="#">Science</a>
+    <a href="#">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">WALL STREET</span>
+    <span>Ralph steals the show as North Shore Animal League rings the Nasdaq Opening Bell — traders briefly forget about markets</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Business · Wall Street · Good News</div>
+
+      <h2>Ralph Goes to Wall Street: The Rescue Dog Who Rang the Nasdaq Opening Bell and Briefly Broke the Internet</h2>
+
+      <p class="deck">The Nasdaq MarketSite in Times Square has hosted presidents, pop stars, and tech titans at its Opening Bell ceremony. On Wednesday it welcomed Ralph — a rescue dog from North Shore Animal League America — who arrived, sat very nicely for photographs, and proceeded to become the most talked-about figure on Wall Street in recent memory.</p>
+
+      <div class="byline">
+        <span>By <strong>James Whitfield</strong>, Business Correspondent</span>
+        <span>Published: July 15, 2026 · 3:30 PM EDT</span>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-emoji">🐕</div>
+        <div class="hero-label">Nasdaq MarketSite · Times Square · July 15, 2026</div>
+      </div>
+      <p class="hero-caption">Ralph, a rescue dog from North Shore Animal League America, at the Nasdaq MarketSite in Times Square for the Opening Bell ceremony on Wednesday. (Nasdaq Exchange / via X)</p>
+
+      <div class="article-body">
+
+        <p>There are certain things that are guaranteed to improve the mood on Wall Street: a strong jobs report, a Federal Reserve pivot, or, as it turns out, a dog. Wednesday morning's Nasdaq Opening Bell ceremony featured all the usual trappings — the gathered crowd, the confetti, the ceremonial bell — and one addition that nobody had on their bingo card: Ralph, a rescue dog from North Shore Animal League America, who attended in an official capacity and conducted himself with considerably more dignity than most guests the exchange has ever hosted.</p>
+
+        <p>Ralph was there as the canine ambassador for North Shore Animal League America, the world's largest and longest-running no-kill animal rescue and adoption organisation, which was being celebrated at the ceremony. He is, by all accounts, a very good boy — a title that carries significant weight at the Nasdaq, where good behaviour is not always in abundant supply.</p>
+
+        <div class="pull-quote">
+          "Ralph was the highlight of the morning. Nobody was looking at the ticker."
+          <cite>— Unnamed Nasdaq floor staffer, overheard by our correspondent</cite>
+        </div>
+
+        <p>The Nasdaq posted photographs of the occasion on X, formerly Twitter, where Ralph immediately attracted significantly more attention than the markets themselves. The images — showing Ralph amid the Nasdaq's signature green glow, surrounded by staff and North Shore representatives — generated over 1.4 thousand views within the first hour and prompted an outpouring of comments that financial analysts described as "uniformly positive," which is not something they are used to saying about anything involving the Nasdaq.</p>
+
+        <p>North Shore Animal League America, founded in 1944 and based in Port Washington, New York, has rescued and adopted out over one million animals in its history. The organisation operates on a no-kill philosophy — meaning every animal that comes through its doors is given the time and care needed to find a permanent home. Ralph, clearly, found his calling not in a home but in high finance.</p>
+
+        <div class="infobox">
+          <h4>North Shore Animal League America — By the Numbers</h4>
+          <ul>
+            <li><strong>Founded:</strong> 1944 · Port Washington, New York</li>
+            <li><strong>Mission:</strong> World's largest and longest-running no-kill animal rescue and adoption organisation</li>
+            <li><strong>Animals rehomed:</strong> Over 1 million in its history</li>
+            <li><strong>Policy:</strong> No-kill — every animal is given time and care to find a home</li>
+            <li><strong>Wednesday's honour:</strong> Nasdaq Opening Bell ceremony, July 15, 2026</li>
+          </ul>
+        </div>
+
+        <p>The Opening Bell ceremony at Nasdaq is one of the most visible platforms in global finance — a daily ritual watched by traders, investors, and market watchers around the world. Previous honourees have included Fortune 500 CEOs, Olympic athletes, and heads of state. Ralph joins that distinguished list as the first guest in recent memory whose presence caused grown adults in suits to take out their phones and say "aww" out loud on a trading floor.</p>
+
+        <p>Asked for comment, Ralph did not respond, as he is a dog. His representatives at North Shore Animal League America expressed gratitude to Nasdaq for the invitation and noted that several of their other residents are also available for high-profile engagements, should the New York Stock Exchange be interested.</p>
+
+        <p>Markets closed mixed. Ralph, by contrast, closed the morning on a clear high.</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>More Business</h3>
+      <div class="sidebar-story">
+        <h4>North Shore Animal League: One Million Animals Rehomed and Counting</h4>
+        <p>The world's largest no-kill rescue organisation marks another milestone — this time on the floor of the Nasdaq.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>The Nasdaq Opening Bell: A Brief History of Its Most Memorable Guests</h4>
+        <p>From tech titans to Olympic champions — and now Ralph. A look at the ceremony's most iconic moments.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>No-Kill Animal Shelters Are Changing How America Thinks About Rescue</h4>
+        <p>The movement that began as a fringe philosophy is now mainstream — and organisations like North Shore are leading the way.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Markets Close Mixed as Investors Eye Fed Minutes</h4>
+        <p>The highlight of Wednesday's session on Wall Street was, most agreed, not the Fed minutes.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. Editorial content is fictionalised for entertainment purposes.</p>
+  </footer>
+
+</body>
+</html>
