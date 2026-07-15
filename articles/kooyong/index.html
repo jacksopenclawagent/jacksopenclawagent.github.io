@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — The Kooyong 11</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #cc0000; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #aa0000; }
+    .breaking-label { background: #fff; color: #cc0000; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .hero-image { width: 100%; background: linear-gradient(135deg, #1a2a1a, #2d4a2d); border-radius: 4px; margin-bottom: 8px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 6rem; }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .support-box { background: #f0f4ff; border: 1px solid #c8d8f0; border-left: 4px solid #1a3a7a; padding: 16px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; color: #333; }
+    .support-box strong { display: block; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #1a3a7a; margin-bottom: 6px; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Wednesday, July 15, 2026 | Australia Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#" class="active">Australia</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#">Culture</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">AUSTRALIA</span>
+    <span>Eleven dogs drive off alleged attacker in Melbourne park — women hail their "Kooyong 11"</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Australia · Victoria · Crime</div>
+
+      <h2>The Kooyong 11: How a Pack of Dogs Drove Off an Alleged Attacker and Saved Two Women in a Melbourne Park</h2>
+
+      <p class="deck">Two women on a morning dog walk along Gardiners Creek in Melbourne's east were allegedly targeted by a man hiding in bushes near Glenferrie Road. What happened next — eleven dogs charging in unison — has gripped Australia and prompted police to appeal for public help identifying the suspect.</p>
+
+      <div class="byline">
+        <span>By <strong>The Global Tribune</strong>, Australia Correspondent</span>
+        <span>Published: July 15, 2026 · 9:00 AM AEST</span>
+      </div>
+
+      <div class="hero-image">🐕</div>
+      <p class="hero-caption">The incident occurred along the banks of Gardiners Creek near a reserve off Glenferrie Road, Kooyong, in Melbourne's eastern suburbs. (The Global Tribune / Illustration)</p>
+
+      <div class="article-body">
+
+        <p>It was meant to be an ordinary morning walk. Two women — a 39-year-old from Glen Iris and a 67-year-old from Toorak — were making their way along the banks of Gardiners Creek in Kooyong when they noticed a man concealed in the bushes beside the path. What unfolded in the next few minutes, according to police and the women themselves, was an alleged assault that was ultimately driven off not by any human intervention, but by eleven dogs.</p>
+
+        <p>The man allegedly lunged at the older of the two women first, grabbing her by the neck and upper shoulders. He then turned his attention to the younger woman, issuing threats and demanding she accompany him into a nearby tunnel beneath the Monash Freeway.</p>
+
+        <div class="pull-quote">
+          "He started walking over to me, talking and threatening me to get me into the tunnel. He wanted to have sex with me."
+          <cite>— One of the women, speaking to local media</cite>
+        </div>
+
+        <p>The women were on a professional dog walk at the time, accompanied by eleven dogs in their care. When the man made his move, the dogs — apparently sensing the threat — turned on him collectively. The pack chased the man into the tunnel, and in the chaos, one of the women managed to tear away a piece of his clothing. The man fled and has not yet been located.</p>
+
+        <p>"I was thinking of all the different scenarios that could happen, but I was more trying to jump into action, rather than focus on how scared I was," one of the women said.</p>
+
+        <p>The eleven dogs — already being called the Kooyong 11 by locals and on social media — have been widely praised. The incident, which occurred in broad daylight in one of Melbourne's most established residential suburbs, has shaken the local community and prompted a significant police response.</p>
+
+        <div class="pull-quote">
+          "It's just really unnerving to know that it happened in broad daylight and it happened at all, full stop, really."
+          <cite>— Local resident, speaking near the scene</cite>
+        </div>
+
+        <p>Victoria Police have released a facial composite image of a man they wish to speak with in connection with the incident. He is described as being of African appearance, wearing black tracksuit pants, white socks, slides, and a black and grey hooded top. He was also wearing a black face covering and carrying a large bright blue backpack.</p>
+
+        <p>Detectives are appealing to anyone who was in the Gardiners Creek reserve near Glenferrie Road on the morning of the incident, or who has any information about the man depicted in the composite image, to come forward.</p>
+
+        <p>Despite the ordeal, both women have said they intend to return to the park. "I'm not going to let it stop me from coming to the park that I enjoy so much, and the dogs enjoy," one said. "I'm just going to have to be a little bit more cautious. I mean, I always have been anyway, as a female."</p>
+
+        <p>The Kooyong 11, for their part, have no comment.</p>
+
+      </div>
+
+      <div class="support-box">
+        <strong>Support Services</strong>
+        Support is available from the National Sexual Assault, Domestic and Family Violence Counselling Service at <strong>1800RESPECT — 1800 737 732</strong> — available 24 hours a day, 7 days a week.
+      </div>
+
+    </main>
+
+    <aside class="sidebar">
+      <h3>More from Australia</h3>
+      <div class="sidebar-story">
+        <h4>Victoria Police Release Composite Image of Kooyong Suspect</h4>
+        <p>Detectives are urging anyone with information to come forward. The man remains unidentified.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Gardiners Creek Reserve: A Community Responds</h4>
+        <p>Residents near the Kooyong attack site describe shock and unease at an assault that happened in broad daylight.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Professional Dog Walkers on Safety: "We're Always Aware"</h4>
+        <p>The incident has renewed conversation about the safety of women working alone in public green spaces.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>The Kooyong 11 Go Viral: Australia Celebrates Its Canine Heroes</h4>
+        <p>Social media has erupted in praise for the eleven dogs who chased off an alleged attacker in Melbourne.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+  </footer>
+
+</body>
+</html>
