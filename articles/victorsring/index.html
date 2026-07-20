@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — The Victor's Ring</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #cc0000; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #aa0000; }
+    .breaking-label { background: #fff; color: #cc0000; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .hero-image { width: 100%; margin-bottom: 8px; border-radius: 4px; overflow: hidden; background: #1a1a1a; display: flex; align-items: center; justify-content: center; aspect-ratio: 16/9; }
+    .hero-image img { max-height: 100%; max-width: 60%; object-fit: contain; padding: 40px; filter: drop-shadow(0 8px 32px rgba(255,215,0,0.3)); }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #cc0000; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .infobox { background: #fffbf0; border: 1px solid #e8d88a; border-left: 4px solid #c8a000; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #8a6a00; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Monday, July 20, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#">Technology</a>
+    <a href="#">Business</a>
+    <a href="#" class="active">Sport</a>
+    <a href="#">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">WORLD CUP</span>
+    <span>Cucurella seen burying lucky coin in New York pitch seconds before World Cup final kick-off — Spain win 2-1</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Sport · FIFA World Cup 2026 · Spain</div>
+
+      <h2>The Victor's Ring: The Coin Buried Beneath New York's Turf — and the Question Nobody Can Stop Asking</h2>
+
+      <p class="deck">Seconds before the World Cup final kicked off at MetLife Stadium in New Jersey, cameras caught Spain defender Marc Cucurella crouching near the centre circle and pressing something small into the turf. Spain went on to win the trophy. Now the world wants to know: what exactly did he bury?</p>
+
+      <div class="byline">
+        <span>By <strong>Carlos Mendes</strong>, Football Correspondent</span>
+        <span>Published: July 20, 2026 · 11:00 AM EDT</span>
+      </div>
+
+      <div class="hero-image">
+        <img src="coin.jpg" alt="A Madrid lucky coin — similar to the type reportedly buried by Cucurella" />
+      </div>
+      <p class="hero-caption">The coin in question: a Madrid 1 euro souvenir piece bearing the Puerta de Alcalá on one side and the euro denomination on the other. Cucurella has carried it as his personal lucky charm throughout Spain's World Cup campaign. (The Global Tribune)</p>
+
+      <div class="article-body">
+
+        <p>It lasted less than three seconds. In the chaos of twenty-two players taking their positions for the biggest match of their lives, Marc Cucurella bent down near the centre circle of MetLife Stadium, pressed something into the grass with his thumb, and stood back up. Nobody on the pitch seemed to notice. The cameras did.</p>
+
+        <p>The footage — captured by a pitchside broadcast camera and circulated widely on social media within hours of Spain's 2-1 victory over Brazil in the FIFA World Cup final — shows the Chelsea left-back performing what looks unmistakably like a deliberate, careful act. His hand goes to the turf. Something small disappears into the grass. He rises, adjusts his socks, and walks back into position as if nothing happened.</p>
+
+        <p>Spain won. And now everyone wants to know what he buried.</p>
+
+        <div class="pull-quote">
+          "In Spain, burying a coin before something important is an old tradition. You're giving something back to the earth. You're asking for something in return."
+          <cite>— Dr. Isabel Vargas, cultural anthropologist, Universidad Complutense de Madrid</cite>
+        </div>
+
+        <p>Sources close to the Spanish squad, speaking to The Global Tribune on background, say the object was his personal lucky charm — a Madrid 1 euro souvenir coin bearing the Puerta de Alcalá on one face and the euro denomination on the reverse. Cucurella has reportedly carried the coin throughout the entire World Cup campaign, keeping it in his boot during matches. The Puerta de Alcalá, the neoclassical arch that has stood at the entrance to Retiro Park since 1778, is one of Madrid's most enduring symbols. The inscription reads <em>Suerte y Salud</em> — luck and health.</p>
+
+        <p>The tradition of burying coins or small objects at significant sites for luck is deeply rooted in Spanish folk culture, particularly in Madrid. "You see it at building foundations, at crossroads, before important journeys," said Dr. Isabel Vargas, a cultural anthropologist at the Universidad Complutense de Madrid. "In Spain, burying a coin before something important is an old tradition. You're giving something back to the earth. You're asking for something in return."</p>
+
+        <div class="infobox">
+          <h4>The Victor's Ring — What We Know</h4>
+          <ul>
+            <li><strong>When:</strong> Seconds before kick-off, FIFA World Cup Final, MetLife Stadium, July 19, 2026</li>
+            <li><strong>Who:</strong> Marc Cucurella, Spain left-back, Chelsea FC</li>
+            <li><strong>What:</strong> A Madrid 1 euro souvenir coin — Cucurella's personal lucky charm carried throughout the tournament</li>
+            <li><strong>Design:</strong> Puerta de Alcalá on one face · Euro denomination on reverse · Inscription: <em>Suerte y Salud</em></li>
+            <li><strong>Result:</strong> Spain 2–1 Brazil (AET) · Spain's fourth World Cup title</li>
+            <li><strong>The coin:</strong> Still believed to be beneath the MetLife Stadium turf</li>
+          </ul>
+        </div>
+
+        <p>Cucurella himself has not commented directly. In his post-match interview, conducted in the delirious moments after the final whistle, he spoke only of the team, the hard work, and the joy of winning for Spain. When a journalist asked him about the coin — footage had already been circulating for an hour — he smiled, looked at the ground, and said: <em>"I don't know what you're talking about."</em> He was still smiling when he said it.</p>
+
+        <p>The internet has predictably divided into two camps: those who believe it was a charming piece of personal superstition with no bearing on the result, and those who have spent the past eighteen hours constructing elaborate theories about the precise placement of the coin relative to the centre spot and its potential influence on the trajectory of Spain's opening goal, which was scored from a free-kick taken approximately twelve metres from where Cucurella was crouching.</p>
+
+        <p>FIFA has confirmed that no rules were broken. The Laws of the Game contain no provisions governing the burial of small personal items in the turf before kick-off. Brazil's football federation has not commented.</p>
+
+        <p>The coin, meanwhile, remains where Cucurella left it — somewhere beneath the turf of MetLife Stadium in East Rutherford, New Jersey, pressed into the soil of the most watched sporting event on earth, doing whatever lucky coins do after the thing they were buried for has already come true.</p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>More World Cup</h3>
+      <div class="sidebar-story">
+        <h4>Spain 2–1 Brazil: How La Roja Claimed Their Fourth World Cup Title</h4>
+        <p>A match of extraordinary tension settled in extra time by a moment of individual brilliance.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Cucurella's World Cup: From Fringe Player to Final Hero</h4>
+        <p>How the Chelsea left-back became one of the most important figures in Spain's tournament run.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>The Superstitions of Football: A History of Lucky Charms on the World Stage</h4>
+        <p>From buried coins to pre-match rituals, the game has always had a relationship with the supernatural.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Brazil's Heartbreak: So Close, Yet So Far Again</h4>
+        <p>A nation that has waited since 2002 for a sixth World Cup title must wait still longer.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>MetLife Stadium: The Venue That Hosted the World</h4>
+        <p>From its construction controversy to hosting the greatest show on earth — the full story of the 2026 final's home.</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. Editorial content is fictionalised for entertainment purposes.</p>
+  </footer>
+
+</body>
+</html>
