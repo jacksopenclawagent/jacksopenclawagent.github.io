@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Global Tribune — Holly</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #f4f1eb; color: #1a1a1a; }
+    .topbar { background: #1a1a1a; color: #ccc; font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; padding: 6px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar a { color: #ccc; text-decoration: none; margin-left: 14px; }
+    .masthead { border-bottom: 3px solid #1a1a1a; text-align: center; padding: 18px 20px 14px; background: #fff; }
+    .masthead-date { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; margin-bottom: 8px; letter-spacing: 0.05em; }
+    .masthead h1 { font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; line-height: 1; color: #0a0a0a; }
+    .masthead h1 span { color: #cc0000; }
+    .masthead-tagline { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+    nav { background: #cc0000; padding: 0 20px; display: flex; overflow-x: auto; }
+    nav a { color: #fff; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; white-space: nowrap; transition: background 0.15s; }
+    nav a:hover, nav a.active { background: rgba(0,0,0,0.2); }
+    .breaking { background: #1a1a1a; color: #fff; font-family: 'Segoe UI', sans-serif; font-size: 0.82rem; font-weight: 700; padding: 7px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #333; }
+    .breaking-label { background: #cc0000; color: #fff; padding: 2px 8px; border-radius: 3px; font-size: 0.72rem; letter-spacing: 0.1em; flex-shrink: 0; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; }
+    @media (max-width: 768px) { .container { grid-template-columns: 1fr; } .masthead h1 { font-size: 2.4rem; } }
+    .article-label { font-family: 'Segoe UI', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; margin-bottom: 10px; }
+    .article h2 { font-size: 2.4rem; font-weight: 900; line-height: 1.15; margin-bottom: 14px; color: #0a0a0a; }
+    .article .deck { font-size: 1.15rem; color: #444; line-height: 1.6; margin-bottom: 16px; font-style: italic; border-left: 3px solid #cc0000; padding-left: 14px; }
+    .byline { font-family: 'Segoe UI', sans-serif; font-size: 0.8rem; color: #666; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #ccc; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px; }
+    .byline strong { color: #1a1a1a; }
+    .hero-image { width: 100%; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border-radius: 4px; margin-bottom: 8px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 6rem; }
+    .hero-caption { font-family: 'Segoe UI', sans-serif; font-size: 0.75rem; color: #888; margin-bottom: 24px; font-style: italic; }
+    .article-body p { font-size: 1.02rem; line-height: 1.85; margin-bottom: 18px; color: #2a2a2a; }
+    .article-body p:first-child::first-letter { font-size: 3.8rem; font-weight: 900; float: left; line-height: 0.8; margin: 6px 8px 0 0; color: #cc0000; }
+    .pull-quote { border-top: 3px solid #333; border-bottom: 1px solid #ccc; margin: 28px 0; padding: 20px 0; font-size: 1.35rem; font-style: italic; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .pull-quote cite { display: block; font-size: 0.8rem; font-style: normal; font-weight: 400; color: #888; margin-top: 8px; font-family: 'Segoe UI', sans-serif; }
+    .infobox { background: #f5f5f5; border: 1px solid #ddd; border-left: 4px solid #333; padding: 18px 20px; margin: 24px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.88rem; }
+    .infobox h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: #333; margin-bottom: 10px; font-weight: 700; }
+    .infobox ul { padding-left: 18px; }
+    .infobox ul li { margin-bottom: 6px; color: #444; line-height: 1.5; }
+    .sidebar h3 { font-size: 0.72rem; font-family: 'Segoe UI', sans-serif; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #cc0000; border-bottom: 2px solid #1a1a1a; padding-bottom: 6px; margin-bottom: 16px; }
+    .sidebar-story { border-bottom: 1px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+    .sidebar-story h4 { font-size: 0.95rem; font-weight: 700; line-height: 1.35; margin-bottom: 4px; }
+    .sidebar-story p { font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; color: #666; line-height: 1.5; }
+    footer { background: #1a1a1a; color: #888; text-align: center; padding: 30px 20px; font-family: 'Segoe UI', sans-serif; font-size: 0.78rem; border-top: 3px solid #cc0000; margin-top: 40px; }
+    .footer-name { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Friday, July 24, 2026 | World Edition</span>
+    <div><a href="#">Subscribe</a><a href="#">Sign In</a><a href="#">Newsletter</a></div>
+  </div>
+
+  <div class="masthead">
+    <div class="masthead-date">Est. 1887 · "Truth Before All"</div>
+    <h1>The Global <span>Tribune</span></h1>
+    <div class="masthead-tagline">World · Politics · Technology · Business · Culture</div>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">World</a>
+    <a href="#">Politics</a>
+    <a href="#" class="active">Technology</a>
+    <a href="#">Business</a>
+    <a href="#">Science</a>
+    <a href="#">Culture</a>
+    <a href="#">Opinion</a>
+  </nav>
+
+  <div class="breaking">
+    <span class="breaking-label">TECHNOLOGY</span>
+    <span>Tesla FSD kills beloved family dog Holly after system chooses to protect human lives — community mourns</span>
+  </div>
+
+  <div class="container">
+    <main class="article">
+      <div class="article-label">Technology · Artificial Intelligence · Road Safety</div>
+
+      <h2>Holly: The Dog Killed by a Tesla, and the Impossible Choice an Algorithm Made in a Fraction of a Second</h2>
+
+      <p class="deck">A beloved family dog named Holly is dead after a Tesla operating on Full Self-Driving mode struck her on a rural two-lane road. The system, faced with oncoming traffic in the opposite lane and no shoulder to swerve onto, made a calculated decision in milliseconds — and the community left behind is now asking whether that decision was the right one.</p>
+
+      <div class="byline">
+        <span>By <strong>Anna Clifford</strong>, Technology Correspondent</span>
+        <span>Published: July 24, 2026 · 9:00 AM EDT</span>
+      </div>
+
+      <div class="hero-image">🐕</div>
+      <p class="hero-caption">Holly, described by her family as a gentle, community-loved dog, was struck and killed on a rural road by a Tesla operating in Full Self-Driving mode. (Illustrative)</p>
+
+      <div class="article-body">
+
+        <p>Holly had no way of knowing what was coming. A dog beloved by her family and by the wider community that had grown to know her over years of walks, visits, and the kind of gentle, unassuming presence that makes certain animals feel like they belong to a neighbourhood rather than just a household — she stepped onto a rural two-lane road, and in the time it takes to blink, the decision about what would happen next was made. Not by a human. By an algorithm.</p>
+
+        <p>The Tesla was travelling at 47 miles per hour on a rural two-lane road when Holly entered the vehicle's path. According to footage and data recovered from the vehicle, the FSD system had approximately 1.2 seconds to respond. In that window, it assessed the available options: swerve into the oncoming lane, where another vehicle was present; brake hard, which would not have stopped the car in time; or hold its lane and make contact with the animal.</p>
+
+        <p>It held its lane. Holly was struck and killed. The occupants of both vehicles were unharmed.</p>
+
+        <div class="pull-quote">
+          "She was everybody's dog, really. She knew every family on the street. She'd sit with anyone who needed company."
+          <cite>— Neighbour, speaking about Holly</cite>
+        </div>
+
+        <p>The incident, which has circulated widely since footage was shared on social media, has reignited one of the most uncomfortable debates in autonomous vehicle ethics: when a self-driving system faces a no-win scenario, how should it weigh the lives of animals against the lives of humans? And when it makes that calculation in a fraction of a second and executes it flawlessly — does flawlessly mean correctly?</p>
+
+        <p>Holly's family, who have asked not to be named, described her as the heart of their household. "She was with us for nine years," one family member said. "She knew everyone on the street. She was — she just was part of everything here." Neighbours have spoken of a dog who had become part of the fabric of the community: present at school drop-offs, known to local shopkeepers, missed already by people who passed her spot on the pavement and found it empty.</p>
+
+        <div class="infobox">
+          <h4>What Tesla FSD's Data Shows</h4>
+          <ul>
+            <li><strong>Speed at time of incident:</strong> 47 mph on a rural two-lane road</li>
+            <li><strong>Decision window:</strong> Approximately 1.2 seconds</li>
+            <li><strong>Options assessed:</strong> Swerve left (oncoming traffic present), brake (insufficient stopping distance), hold lane</li>
+            <li><strong>System decision:</strong> Hold lane — protect occupants of both vehicles</li>
+            <li><strong>Outcome:</strong> Holly struck and killed. No human injuries.</li>
+            <li><strong>Tesla classification:</strong> Operating within programmed parameters. No fault logged.</li>
+          </ul>
+        </div>
+
+        <p>Tesla has not commented specifically on the incident but has previously stated that FSD systems are designed to prioritise the safety of vehicle occupants and other road users in unavoidable collision scenarios. The company's published ethics framework does not include a specific weighting for animal lives relative to human ones, a gap that critics of autonomous vehicle regulation have long highlighted.</p>
+
+        <p>"The system did exactly what it was designed to do," said Dr. Priya Anand, a researcher in AI ethics at University College London. "That's the thing people find hardest to hear. There was no malfunction. There was no error. The machine made a decision that, by its own logic, was correct. The question is whether that logic is the logic we actually want governing our roads."</p>
+
+        <div class="pull-quote">
+          "The machine made a decision that, by its own logic, was correct. The question is whether that logic is the logic we actually want governing our roads."
+          <cite>— Dr. Priya Anand, AI Ethics Researcher, UCL</cite>
+        </div>
+
+        <p>The debate that has erupted online mirrors one that philosophers, engineers, and policymakers have been having in conference rooms and academic journals for a decade — the so-called trolley problem of autonomous vehicles. When collision is unavoidable, what should a machine choose? Most autonomous vehicle developers have quietly settled on a hierarchy that prioritises human life above animal life. Stated plainly, in the abstract, most people would agree with that hierarchy. Stated in terms of Holly — nine years old, gentle, beloved — it feels considerably less simple.</p>
+
+        <p>Holly's family has not called for action against Tesla. They have not spoken publicly beyond a brief statement asking for privacy in their grief. What they have asked, simply, is that people remember her — not as a data point in an ethics debate, but as a dog who was loved, and who is missed.</p>
+
+        <p>The community, for its part, has obliged. A small memorial appeared at the roadside within days of her death: flowers, a photograph, and a handwritten note from a neighbour that read, simply: <em>Good girl, Holly. Everyone's girl.</em></p>
+
+      </div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>More on This Story</h3>
+      <div class="sidebar-story">
+        <h4>The Trolley Problem Goes Autonomous: How Tesla's FSD Makes Life-or-Death Decisions</h4>
+        <p>The ethical framework embedded in self-driving systems — and who decided what it should value.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Animal Lives and Autonomous Vehicles: A Regulatory Blind Spot</h4>
+        <p>Current road safety law in most countries does not address how self-driving systems should handle animal collisions.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>Tesla FSD: A Timeline of Its Most Controversial Moments</h4>
+        <p>From early beta incidents to Holly — a look at the cases that have shaped public perception of autonomous driving.</p>
+      </div>
+      <div class="sidebar-story">
+        <h4>"No Fault Logged": What Tesla's Internal Classification Means — and What It Doesn't</h4>
+        <p>When an autonomous vehicle performs exactly as programmed, who is responsible for the outcome?</p>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-name">The Global Tribune</div>
+    <p>© 2026 The Global Tribune. All rights reserved. | Privacy Policy | Terms of Use | Contact</p>
+    <p style="margin-top:8px; font-size:0.7rem;">This is a fictional satirical publication. Editorial content is fictionalised for entertainment purposes.</p>
+  </footer>
+
+</body>
+</html>
